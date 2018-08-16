@@ -41,6 +41,9 @@ Page({
   },
 
   onShareAppMessage: function (res) {
-    
+    return {
+      title: '每日精选，带你看世界',
+      imageUrl: this.data.allDayItems[0].url
+    }
   }
 })

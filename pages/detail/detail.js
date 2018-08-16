@@ -2,19 +2,19 @@
 const app = getApp()
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  title: '',
+  id: '',
   data: {
     details: [],
   },
 
   onLoad: function (options) {
+    this.title = options.title;
     wx.setNavigationBarTitle({
-      title: options.title
+      title: this.title
     })
     wx.showNavigationBarLoading();
+    this.id = options.id;
     this.requestDetail(options.id);
   },
 
@@ -25,5 +25,13 @@ Page({
         details: res.picture
       })
     })
+  },
+
+  onShareAppMessage: function (res) {
+    return {
+      title: this.title,
+      imageUrl: this.data.details[0].url,
+      path: `/pages/detail/detail?id=${this.id}&title=${this.title}`
+    }
   }
 })
