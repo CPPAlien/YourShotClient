@@ -1,0 +1,11 @@
+<!-- pages/share-page/share-page.wxml -->
+<view class="container">
+  <painter style="position:fixed;top:-9999rpx;" palette="{{palette}}" bind:imgOK="onImgOK" />
+  <view class="image-layout">
+    <image style="{{style}}" src="{{imagePath}}" mode="aspectFit" />
+  </view>
+  <view class="save-button" catchtap="saveImg">保存图片</view>
+  <view class="text">
+    <text>保存后分享至朋友圈</text>
+  </view>
+</view>

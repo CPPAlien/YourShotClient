@@ -21,7 +21,13 @@ Component({
    */
   methods: {
     imageTapped(event) {
-      wx.previewImage({urls: [event.target.dataset.url]})
-    },  
+      wx.previewImage({urls: [event.target.dataset.item.url]})
+    },
+
+    longPressed(event) {
+      const pages = getCurrentPages();
+      const currentPage = pages[pages.length - 1];
+      currentPage.showModal(event.target.dataset.item);
+    }
   }
 })

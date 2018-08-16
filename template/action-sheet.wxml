@@ -1,0 +1,13 @@
+<!-- 生成一个特定功能的弹窗 -->
+<template name="modal">
+  <view style="position:fixed;width:100%;height:100%;left:0;top:0;background:#000;opacity:0.5;" catch:tap="hideModal" catchtouchmove="myCatchTouch" />
+  <view style="position:fixed;width:80%;left:10%;top:35%;background:#fff;border-radius:6rpx">
+    <block wx:for="{{itemList}}" wx:key="{{index}}">
+      <view style='position:relative;'>
+        <view style="margin-left:40rpx;display:flex;justify-content:left;align-items:center;font-size:30rpx;height:105rpx;">{{item.title ? item.title: item}}</view>
+        <button style="height:105rpx;width:100%;opacity:0;position:absolute;top:0" catch:tap="onSheetTapped" data-item="{{item}}" open-type="{{item.type ? item.type : ''}}" />
+        <view style="width:100%;height:0.5rpx;background:#eee;" wx:if="{{index<itemList.length-1}}" />
+      </view>
+    </block>
+  </view>
+</template>

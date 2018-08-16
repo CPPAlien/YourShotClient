@@ -1,4 +1,6 @@
 <!--pages/detail/detail.wxml-->
+<import src='/template/action-sheet.wxml' />
 <view class="container">
   <detail-item wx:for="{{details}}" wx:key="{{item.id}}" data="{{item}}"/>
+  <template is="modal" data="{{itemList}}" wx:if="{{showModal}}" />
 </view>

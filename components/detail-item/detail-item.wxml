@@ -1,6 +1,6 @@
 <!--components/day-item.wxml-->
 <view class='container'>
-  <image bind:tap='imageTapped' data-url="{{data.url}}" class='pic' src="{{data.url}}" mode="widthFix"/>
+  <image bind:tap='imageTapped' bind:longpress= 'longPressed' data-item="{{data}}" class='pic' src="{{data.url}}" mode="widthFix"/>
   <view class='title'>{{data.title}}</view>
   <view class='des'>{{data.content}}（摄影：{{data.author}}）</view>
 </view>
