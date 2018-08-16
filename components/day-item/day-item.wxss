@@ -1,0 +1,14 @@
+/* components/day-item.wxss */
+
+.title {
+  display: block;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50rpx;
+}

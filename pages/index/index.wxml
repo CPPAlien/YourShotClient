@@ -1,0 +1,4 @@
+<!--index.wxml-->
+<view class="container">
+  <day-item bind:tap="itemTapped" data-item="{{item}}" wx:for="{{allDayItems}}" wx:key="{{item.id}}" data="{{item}}"/>
+</view>

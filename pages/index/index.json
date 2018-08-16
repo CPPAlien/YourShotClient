@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "day-item": "/components/day-item/day-item"
+  }
+}
