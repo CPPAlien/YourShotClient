@@ -2,7 +2,10 @@
 const app = getApp()
 const SHARE_FRIEND = '发给微信好友';
 const SHARE_MOMENT = '分享至朋友圈';
-const ARRAYS = [{ title: SHARE_FRIEND, type: 'share' }, SHARE_MOMENT];
+const ARRAYS = [{
+  title: SHARE_FRIEND,
+  type: 'share'
+}, SHARE_MOMENT];
 
 Page({
   title: '',
@@ -17,14 +20,18 @@ Page({
       title: this.title
     })
     wx.showNavigationBarLoading();
-    
+    if (options.scrollTop) {
+      this.scrollTop = options.scrollTop;
+    }
+
     if (options.q) {
       const url = decodeURIComponent(options.q);
       this.detailId = app.getParameterByName('id', url);
+      this.scrollTop = app.getParameterByName('scrollTop', url);
     } else {
       this.detailId = options.id;
     }
-    
+
     this.requestDetail(this.detailId);
   },
 
@@ -51,7 +58,8 @@ Page({
     switch (e.currentTarget.dataset.item) {
       case SHARE_MOMENT:
         wx.navigateTo({
-          url: `/pages/share-page/share-page?id=${this.detailId}&title=${this.currentItem.title}&image=${encodeURIComponent(this.currentItem.url)}`
+          url: `/pages/share-page/share-page?id=${this.detailId}&title=${this.currentItem.title}
+          &image=${encodeURIComponent(this.currentItem.url)}&scrollTop=${this.scrollTop}&content=${this.currentItem.content}`
         })
         break;
     }
@@ -63,15 +71,24 @@ Page({
       this.setData({
         details: res.picture
       })
+      if (this.scrollTop) {
+        wx.pageScrollTo({
+          scrollTop: this.scrollTop
+        });
+      }
     })
+  },
+
+  onPageScroll(event) {
+    this.scrollTop = event.scrollTop;
   },
 
   onShareAppMessage: function (res) {
     if (this.currentItem) {
       return {
-        title: this.currentItem.title,
+        title: `${this.currentItem.title} | ${this.currentItem.content}`,
         imageUrl: this.currentItem.url,
-        path: `/pages/detail/detail?id=${this.detailId}&title=${this.title}`
+        path: `/pages/detail/detail?id=${this.detailId}&title=${this.title}&scrollTop=${this.scrollTop}`
       }
     }
     return {

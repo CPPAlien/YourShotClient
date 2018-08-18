@@ -2,21 +2,14 @@
 const app = getApp();
 
 export default class DesignMoment {
-  content = {}
-
-  do(content) {
-    this.content = JSON.parse(JSON.stringify(content));
-    return this._template();
-  }
-
-  _template() {
+  template(data) {
     return ({
       width: '654rpx',
       height: '800rpx',
       borderRadius: '8rpx',
       views: [{
         type: 'image',
-        url: this.content.image,
+        url: data.image,
         css: {
           top: '24rpx',
           left: '24rpx',
@@ -36,18 +29,20 @@ export default class DesignMoment {
       },
       {
         type: 'text',
-        text: this.content.title,
+        text: data.title.trim() + ' | ' + data.content.trim(),
         css: {
           left: '32rpx',
-          bottom: '62rpx',
+          bottom: '50rpx',
           width: '450rpx',
           fontSize: '32rpx',
+          lineHeight: '40rpx',
           color: '#333',
+          maxLines: 2,
         },
       },
       {
         type: 'qrcode',
-        content: `https://www.flowergo.xyz/detail?id=${this.content.id}`,
+        content: `https://www.flowergo.xyz/detail?id=${data.id}&scrollTop=${data.scrollTop}`,
         css: {
           bottom: '24rpx',
           right: '32rpx',

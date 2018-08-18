@@ -55,23 +55,28 @@ Page({
     wx.setNavigationBarTitle({
       title: '分享到朋友圈',
     });
-    const designPalette = new DesignPalette();
-    decodeURIComponent()
-    const design = {
-      image: decodeURIComponent(options.image),
-      id: options.id,
-      title: options.title,
-    };
-    const palette = designPalette.do(design);
-    this.setData({
-      palette: palette,
-      style: `width:${palette.width};height:${palette.height};`,
-    });
+    app.request.get(`/download?pic=${decodeURIComponent(options.image)}`).then((res) => {
+      const design = {
+        image: res,
+        id: options.id,
+        title: options.title,
+        scrollTop: options.scrollTop,
+        content: options.content,
+      };
+      const palette = new DesignPalette().template(design);
+      this.setData({
+        palette: palette,
+        style: `width:${palette.width};height:${palette.height};`,
+      });
+    }, () => {
+      this.failed();
+    })
   },
 
   failed() {
     wx.hideLoading();
     app.showToast('生成失败，请重试');
+    app.navigateBackWithTimeout();
   },
 
   onImgOK(e) {

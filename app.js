@@ -55,4 +55,10 @@ App({
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   },
+
+  navigateBackWithTimeout() {
+    setTimeout(() => {
+      wx.navigateBack();
+    }, 1000);
+  },
 })
