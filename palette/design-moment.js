@@ -6,15 +6,12 @@ export default class DesignMoment {
     return ({
       width: '654rpx',
       height: '800rpx',
-      borderRadius: '8rpx',
       views: [{
         type: 'image',
         url: data.image,
         css: {
-          top: '24rpx',
-          left: '24rpx',
-          width: '606rpx',
-          height: '606rpx',
+          width: '654rpx',
+          height: '654rpx',
         },
       },
       {
@@ -24,7 +21,6 @@ export default class DesignMoment {
           bottom: '0rpx',
           width: '654rpx',
           height: '152rpx',
-          borderRadius: '8rpx',
         },
       },
       {
