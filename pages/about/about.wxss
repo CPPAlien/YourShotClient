@@ -1,0 +1,31 @@
+/* pages/about/about.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 100%;
+  margin-top: 50rpx;
+}
+
+.text-logo {
+  display: block;
+  position: relative;
+  margin-top: 8%;
+  color: #333;
+  font-size: 35rpx;
+  text-align: center;
+}
+
+.introduction {
+  display: block;
+  color: #666;
+  font-size: 30rpx;
+  margin-top: 15%;
+  text-indent: 2em;
+  width: 600rpx;
+}

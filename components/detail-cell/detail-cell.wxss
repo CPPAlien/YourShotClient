@@ -1,0 +1,47 @@
+.container {
+  background-color: white;
+}
+
+.container-hover {
+  background-color: #eee;
+}
+
+.cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 104rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  color: #333;
+  margin-left: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'PingFangSC-Regular';
+}
+
+.right-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.arrow {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 32rpx;
+}
+
+.seperator {
+  height: 1rpx;
+  background-color: #eee;
+}
+
+slot{
+  margin-left:0;
+}

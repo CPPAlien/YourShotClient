@@ -1,0 +1,6 @@
+<!-- pages/about/about.wxml -->
+<view class='container'>
+  <image class="logo" src="/res/icon_logo.jpg"/>
+  <text class="text-logo">{{textLogo}}</text>
+  <view class="introduction">{{introduction}}</view>
+</view>

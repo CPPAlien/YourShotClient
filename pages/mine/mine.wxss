@@ -1,0 +1,73 @@
+/* pages/mine/mine.wxss */
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  height: 232rpx;
+  width: 100%;
+}
+
+.avatar {
+  position: relative;
+  margin-left: 48rpx;
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 500rpx;
+  border: #fff solid 6rpx;
+}
+
+.sign-in-up {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-size: 48rpx;
+  margin-left: 48rpx;
+}
+
+.items {
+  position: relative;
+  margin-top: 24rpx;
+  width: 100%;
+}
+
+.login {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.contact {
+  position: absolute;
+  bottom: 0rpx;
+  opacity: 0;
+  width: 100%;
+  height: 104rpx;
+}
+
+.logout {
+  font-size: 28rpx;
+  line-height: 102rpx;
+  text-align: center;
+  color: #333;
+  background-color: white;
+  height: 104rpx;
+  margin-top: 24rpx;
+}
+
+.logout-hover {
+  background-color: #eee;
+}

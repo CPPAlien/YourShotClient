@@ -1,0 +1,18 @@
+<!-- pages/mine/mine.wxml -->
+<view class="container">
+    <view class="header">
+        <image class="avatar" src="{{isLogin ? userInfo.avatarUrl : '/res/default_avatar.png'}}" mode="aspectFill" />
+        <view class="sign-in-up">
+            {{isLogin ? userInfo.nickName : '点击授权登录'}}
+        </view>
+        <button wx:if='{{!isLogin}}' open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="login"/>
+    </view>
+    <view class="items">
+        <detail-cell title="关于我们" hasSeperator="{{true}}" bind:tap="about" />
+        <detail-cell title="建议反馈" hasSeperator="{{true}}"/>
+        <button open-type="feedback" class="contact" />
+    </view>
+    <view class="logout" hover-class="logout-hover" hover-stay-time="50" catch:tap="onLogoutTapped" wx:if="{{isLogin}}">
+        退出登录
+    </view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的",
+  "usingComponents":{
+    "detail-cell":"/components/detail-cell/detail-cell"
+}
+}

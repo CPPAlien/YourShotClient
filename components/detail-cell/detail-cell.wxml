@@ -1,0 +1,10 @@
+<view class="container" hover-class="container-hover" hover-stay-time="50" style="{{customStyle}}">
+  <view class="cell">
+    <view class="title single-line-text" style="{{titleStyle}}">{{title}}</view>
+    <slot></slot>
+    <view class="right-container" style="opacity:{{hasRightArrow ? 1 : 0}};">
+      <image class="arrow" src="/res/arrow_gray.png" mode="aspectFit" />
+    </view>
+  </view>
+  <view class="seperator" wx:if="{{hasSeperator}}"></view>
+</view>

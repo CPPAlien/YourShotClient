@@ -1,13 +1,34 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/mine/mine",
     "pages/detail/detail",
-    "pages/share-page/share-page"
+    "pages/share-page/share-page",
+    "pages/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "每日精选",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#333",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "每日精选",
+        "iconPath": "/res/icon_pic.png",
+        "selectedIconPath": "/res/icon_pic_s.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/res/icon_mine.png",
+        "selectedIconPath": "/res/icon_mine_s.png"
+      }
+    ]
   }
 }
