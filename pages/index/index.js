@@ -14,9 +14,12 @@ Page({
     this.requestList();
   },
   
-  requestList() {
+  requestList(refresh) {
     wx.showNavigationBarLoading();
     app.request.get(`/jiekou/mains/p${this.pageIndex}.html`).then((res) => {
+      if (refresh) {
+        this.data.allDayItems = [];
+      }
       for (const item of res.album) {
         if (item.title && item.title.indexOf('国家地理毛绒玩具') < 0) {
           this.data.allDayItems.push(item);
@@ -30,9 +33,14 @@ Page({
     }, () => {
       wx.hideNavigationBarLoading();
       this.setData({
-        error: true
+        error: true,
+        allDayItems: []
       })
     })
+  },
+
+  retry() {
+    this.requestList(true);
   },
 
   onReachBottom() {
@@ -55,7 +63,7 @@ Page({
 
   onPullDownRefresh() {
     this.pageIndex = 1;
-    this.requestList();
+    this.requestList(true);
     wx.stopPullDownRefresh();
     app.showToast('每日零点更新');
   }

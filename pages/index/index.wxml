@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <day-item bind:tap="itemTapped" data-item="{{item}}" wx:for="{{allDayItems}}" wx:key="{{item.id}}" data="{{item}}"/>
-  <view class='error-container' wx:if='{{error}}' bind:tap='requestList'>
+  <view class='error-container' wx:if='{{error}}' bind:tap='retry'>
     <image class='error-image' src='/res/network_error.png'/>
     <view class='error-text'>网络异常，点击重新加载</view>
   </view>
