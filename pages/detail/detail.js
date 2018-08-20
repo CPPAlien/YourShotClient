@@ -69,7 +69,7 @@ Page({
     app.request.get(`/jiekou/albums/a${detailId}.html`).then((res) => {
       wx.hideNavigationBarLoading();
       this.setData({
-        details: res.picture
+        details: res.picture,
       })
       if (this.scrollTop) {
         wx.pageScrollTo({
@@ -81,6 +81,12 @@ Page({
 
   onPageScroll(event) {
     this.scrollTop = event.scrollTop;
+  },
+
+  backToHome(event) {
+    wx.switchTab({
+      url: "/pages/index/index"
+    })
   },
 
   onShareAppMessage: function (res) {

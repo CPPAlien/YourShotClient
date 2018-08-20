@@ -2,5 +2,9 @@
 <import src='/template/action-sheet.wxml' />
 <view class="container">
   <detail-item wx:for="{{details}}" wx:key="{{item.id}}" data="{{item}}"/>
+  <view wx:if='{{details[0]}}' class="bottom" bind:tap="backToHome">
+    <image src='/res/more.png' class='bottom-image'/>
+    <view class='bottom-text'>点击回首页，查看更多精彩</view>
+  </view>
   <template is="modal" data="{{itemList}}" wx:if="{{showModal}}" />
 </view>
