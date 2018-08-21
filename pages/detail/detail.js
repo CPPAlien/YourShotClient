@@ -12,6 +12,7 @@ Page({
   currentItem: '',
   data: {
     details: [],
+    error: false
   },
 
   onLoad: function (options) {
@@ -19,7 +20,7 @@ Page({
     wx.setNavigationBarTitle({
       title: this.title
     })
-    wx.showNavigationBarLoading();
+    
     if (options.scrollTop) {
       this.scrollTop = options.scrollTop;
     }
@@ -66,17 +67,28 @@ Page({
   },
 
   requestDetail(detailId) {
+    wx.showNavigationBarLoading();
     app.request.get(`/jiekou/albums/a${detailId}.html`).then((res) => {
       wx.hideNavigationBarLoading();
       this.setData({
         details: res.picture,
+        error: false
       })
       if (this.scrollTop) {
         wx.pageScrollTo({
           scrollTop: this.scrollTop
         });
       }
-    })
+    }, () => {
+      this.setData({
+        error: true
+      })
+      wx.hideNavigationBarLoading();
+    });
+  },
+
+  retry() {
+    this.requestDetail(this.detailId);
   },
 
   onPageScroll(event) {
@@ -91,9 +103,13 @@ Page({
 
   onShareAppMessage: function (res) {
     if (this.currentItem) {
+      const title = this.currentItem.title;
+      const content = this.currentItem.content;
+      const url = this.currentItem.url;
+      this.currentItem = '';
       return {
-        title: `${this.currentItem.title} | ${this.currentItem.content}`,
-        imageUrl: this.currentItem.url,
+        title: `${title} | ${content}`,
+        imageUrl: url,
         path: `/pages/detail/detail?id=${this.detailId}&title=${this.title}&scrollTop=${this.scrollTop}`
       }
     }

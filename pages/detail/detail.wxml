@@ -7,4 +7,8 @@
     <view class='bottom-text'>点击回首页，查看更多精彩</view>
   </view>
   <template is="modal" data="{{itemList}}" wx:if="{{showModal}}" />
+  <view class='error-container' wx:if='{{error}}' bind:tap='retry'>
+    <image class='error-image' src='/res/network_error.png'/>
+    <view class='error-text'>网络异常，点击重新加载</view>
+  </view>
 </view>
