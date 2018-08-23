@@ -25,7 +25,7 @@ export default class DesignMoment {
       },
       {
         type: 'text',
-        text: data.title.trim() + ' | ' + data.content.trim(),
+        text: `${data.title.trim()}${data.content ?  " | " + data.content.trim() : ""}`,
         css: {
           left: '32rpx',
           bottom: '50rpx',
@@ -38,7 +38,7 @@ export default class DesignMoment {
       },
       {
         type: 'qrcode',
-        content: `https://www.flowergo.xyz/detail?id=${data.id}&scrollTop=${data.scrollTop}`,
+        content: `https://www.flowergo.xyz/detail?id=${data.id}${data.scrollTop ? "&scrollTop=" + data.scrollTop : ""}`,
         css: {
           bottom: '24rpx',
           right: '32rpx',

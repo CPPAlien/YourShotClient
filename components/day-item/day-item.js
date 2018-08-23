@@ -20,6 +20,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    longPressed(event) {
+      const pages = getCurrentPages();
+      const currentPage = pages[pages.length - 1];
+      currentPage.showModal(event.target.dataset.item);
+    }
   }
 })

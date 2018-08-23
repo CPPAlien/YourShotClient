@@ -1,6 +1,10 @@
-//index.js
-//获取应用实例
 const app = getApp()
+const SHARE_FRIEND = '发给微信好友';
+const SHARE_MOMENT = '分享至朋友圈';
+const ARRAYS = [{
+  title: SHARE_FRIEND,
+  type: 'share'
+}, SHARE_MOMENT];
 
 Page({
   pageIndex: 1,
@@ -12,6 +16,36 @@ Page({
   onLoad: function () {
     this.pageIndex = 1;
     this.requestList();
+  },
+
+  hideModal() {
+    this.setData({
+      showModal: false,
+      itemList: [],
+    });
+    this.currentItem = '';
+  },
+
+  showModal(item) {
+    this.currentItem = item;
+    this.setData({
+      showModal: true,
+      itemList: ARRAYS,
+    });
+  },
+
+  onSheetTapped(e) {
+    this.setData({
+      showModal: false,
+    });
+    switch (e.currentTarget.dataset.item) {
+      case SHARE_MOMENT:
+        wx.navigateTo({
+          url: `/pages/share-page/share-page?id=${this.currentItem.id}&title=${this.currentItem.title}
+          &image=${encodeURIComponent(this.currentItem.url)}`
+        })
+        break;
+    }
   },
   
   requestList(refresh) {
@@ -55,6 +89,17 @@ Page({
   },
 
   onShareAppMessage: function (res) {
+    if (this.currentItem) {
+      const title = this.currentItem.title;
+      const url = this.currentItem.url;
+      const id = this.currentItem.id;
+      this.currentItem = '';
+      return {
+        title: `${title}`,
+        imageUrl: url,
+        path: `/pages/detail/detail?id=${id}&title=${title}`
+      }
+    }
     return {
       title: '每日精选，带你看世界',
       imageUrl: this.data.allDayItems[0].url
