@@ -1,14 +1,12 @@
 {
   "pages": [
-    "pages/shot/shot",
-    "pages/photo-edit/photo-edit",
-    
     "pages/index/index",
+    "pages/shot/shot",
     "pages/mine/mine",
     "pages/detail/detail",
     "pages/share-page/share-page",
-    "pages/about/about"
-    
+    "pages/about/about",
+    "pages/photo-edit/photo-edit"
   ],
   "window": {
     "backgroundTextStyle": "dark",
