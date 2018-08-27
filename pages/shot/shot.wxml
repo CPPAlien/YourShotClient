@@ -1,0 +1,8 @@
+<view class="page-body">
+  <camera device-position="back" flash="off" binderror="error" style="width: 750rpx; height: 750rpx;"></camera>
+  <view class="btn-area">
+    <image src="/res/icon_choose_pic.png" class="choose-pic" bindtap="choosePic"/>
+    <image src="/res/icon_shot.png" class="shot" bindtap="takePhoto"/>
+    <view class="choose-pic"/>
+  </view>
+</view>

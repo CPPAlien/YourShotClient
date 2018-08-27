@@ -1,0 +1,12 @@
+<view class="container">
+  <image src="{{imagePath}}" class="image" mode="aspectFill"/>
+  <scroll-view scroll-x>
+    <view class="scroll-container">
+      <view wx:for="{{filters}}" bind:tap="filterTapped" data-filter="{{item}}" wx:key="{{item}}" class="filter-item">
+        <view class="filter-text" hover-class="filter-text-hover">{{item}}</view>
+        <image class='filter-image' src="{{filtersMap[item]}}" mode="aspectFill"/>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<canvas wx:for="{{filters}}" canvas-id="{{item}}" wx:key="{{item}}"></canvas>

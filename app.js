@@ -5,6 +5,8 @@ App({
   onLaunch: function () {
     // 展示本地存储能力
     this.globalData.userInfo = wx.getStorageSync('userInfo') || null;
+    this.rpxRatio = wx.getSystemInfoSync().screenWidth / 750;
+    console.log(`rpxRatio = ${this.rpxRatio}`)
   },
 
   globalData: {

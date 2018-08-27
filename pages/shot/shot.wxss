@@ -1,0 +1,30 @@
+.preview-tips {
+  margin: 20rpx 0;  
+}
+
+.video {
+  margin: 50px auto;
+  width: 100%;
+  height: 300px;
+}
+
+.btn-area {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shot {
+  width: 200rpx;
+  height: 200rpx;
+  align-items: center;
+}
+
+.choose-pic {
+  width: 100rpx;
+  height: 100rpx;
+  margin-left: 60rpx;
+}

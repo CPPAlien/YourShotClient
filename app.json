@@ -1,10 +1,14 @@
 {
   "pages": [
+    "pages/shot/shot",
+    "pages/photo-edit/photo-edit",
+    
     "pages/index/index",
     "pages/mine/mine",
     "pages/detail/detail",
     "pages/share-page/share-page",
     "pages/about/about"
+    
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -22,6 +26,12 @@
         "text": "每日精选",
         "iconPath": "/res/icon_pic.png",
         "selectedIconPath": "/res/icon_pic_s.png"
+      },
+      {
+        "pagePath": "pages/shot/shot",
+        "text": "",
+        "iconPath": "/res/icon_add.png",
+        "selectedIconPath": "/res/icon_add_s.png"
       },
       {
         "pagePath": "pages/mine/mine",
