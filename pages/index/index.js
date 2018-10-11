@@ -60,16 +60,33 @@ Page({
         }
       }
       wx.hideNavigationBarLoading();
+      wx.setStorage({
+        key: "data",
+        data: this.data.allDayItems,
+      })
       this.setData({
         error: false,
         allDayItems: this.data.allDayItems
       })
     }, () => {
       wx.hideNavigationBarLoading();
-      this.setData({
-        error: true,
-        allDayItems: []
-      })
+      let data;
+      try {
+        data = wx.getStorageSync("data");
+      } catch (e) {
+        console.error(e);
+      }
+      if (data) {
+        this.setData({
+          allDayItems: data
+        })
+        app.showToast('网络异常');
+      } else {
+        this.setData({
+          error: true,
+          allDayItems: []
+        })
+      }
     })
   },
 

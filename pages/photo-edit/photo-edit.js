@@ -44,6 +44,7 @@ Page({
     wx.getImageInfo({
       src: this.imagePath,
       success: function (res) {
+        console.log(res);
         that.picWidth = res.width;
         that.picHeight = res.height;
         that.render(0);
@@ -57,18 +58,26 @@ Page({
       return;
     }
     const that = this;
-    const context = wx.createCanvasContext(filter)
+    const context = wx.createCanvasContext('canvas')
     if (that.picWidth < that.picHeight) {
+      that.picSize = that.picWidth;
       context.drawImage(this.imagePath, 0, (that.picHeight - that.picWidth) / 2, that.picWidth, that.picWidth, 0, 0, this.size, this.size);
     } else {
+      that.picSize = that.picHeight;
       context.drawImage(this.imagePath, (that.picWidth - that.picHeight) / 2, 0, that.picHeight, that.picHeight, 0, 0, this.size, this.size);
     }
     
     context.draw(false, () => {
-      new WxCaman(filter, this.size, this.size, function () {
+      new WxCaman('canvas', this.size, this.size, function () {
         this[filter](false)
         this.render(()=> {
-          wx.canvasToTempFilePath({canvasId: filter, success: function(res) {
+          wx.canvasToTempFilePath({canvasId: 'canvas', fileType: 'jpg', quality: 1, success: function(res) {
+            wx.getImageInfo({
+              src: res.tempFilePath,
+              success: function (res) {
+                console.log(res);
+              }
+            })
             that.data.filtersMap[filter] = res.tempFilePath;
             that.setData({
               filtersMap: that.data.filtersMap

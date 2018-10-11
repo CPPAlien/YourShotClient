@@ -9,4 +9,4 @@
     </view>
   </scroll-view>
 </view>
-<canvas wx:for="{{filters}}" canvas-id="{{item}}" wx:key="{{item}}"></canvas>
+<canvas canvas-id="canvas"></canvas>
